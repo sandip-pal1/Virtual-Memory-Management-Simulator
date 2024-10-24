@@ -99,7 +99,7 @@ function simulateLRU(pageReferences, pageFrames) {
     return { result, pageFaults };
 }
 
-// Optimal Algorithm
+// Corrected Optimal Algorithm
 function simulateOptimal(pageReferences, pageFrames) {
     let frames = [];
     let pageFaults = 0;
@@ -118,31 +118,40 @@ function simulateOptimal(pageReferences, pageFrames) {
             pageFault = true;
 
             if (frames.length < pageFrames) {
-                frames.push(page);
+                frames.push(page); // Add the page if there's space
             } else {
                 // Optimal replacement: find the frame not used for the longest future time
-                let furthestUse = -1;
                 let replaceIndex = -1;
+                let furthestUse = -1;
+
+                // Loop over each page in frames and determine when it's used next
                 frames.forEach((frame, index) => {
-                    let nextUse = pageReferences.slice(step + 1).indexOf(frame);
+                    let nextUse = pageReferences.slice(step + 1).indexOf(frame); // Look ahead in the future references
+                    
                     if (nextUse === -1) {
-                        replaceIndex = index; // If not found, consider it for replacement
-                        return;
+                        // If the page isn't used again, replace it immediately
+                        replaceIndex = index;
+                        furthestUse = Infinity; // Maximize furthestUse for immediate replacement
                     } else if (nextUse > furthestUse) {
+                        // Otherwise, track the page used farthest in the future
                         furthestUse = nextUse;
                         replaceIndex = index;
                     }
                 });
+
+                // Replace the page at the selected index
                 frames[replaceIndex] = page;
             }
         }
 
+        // Update the table with the current frame state
         tableHTML += "<td><div class='page-frame-column'>";
         frames.slice().reverse().forEach(frame => {
             tableHTML += `<div>${frame}</div>`;
         });
         tableHTML += "</div></td>";
 
+        // Record whether it was a hit or miss
         result.push(pageFault ? "Miss" : "Hit");
     });
 
