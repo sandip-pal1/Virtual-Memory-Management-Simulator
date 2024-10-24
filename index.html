@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Virtual Memory Manager Simulation</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<div class="container">
+    <h1>Virtual Memory Manager Simulation</h1>
+    
+    <!-- Dropdown for selecting number of frames -->
+    <div id="settings">
+        <label for="frames">No. of Page Frames:</label>
+        <select id="frames">
+            <option value="3">3</option>
+            <option value="4" selected>4</option>
+        </select>
+
+        <!-- Input for the user to provide the page reference string -->
+        <label for="page-ref">Page Reference String:</label>
+        <input type="text" id="page-ref" placeholder="e.g. 7,0,1,2,0,3,0,4,2,3,0,3,2,3">
+
+        <!-- Dropdown for selecting the algorithm (FIFO, LRU, Optimal) -->
+        <label for="algorithm">Algorithm:</label>
+        <select id="algorithm">
+            <option value="FIFO">FIFO</option>
+            <option value="LRU">LRU</option>
+            <option value="OPTIMAL">Optimal</option>
+        </select>
+
+        <button onclick="simulate()">Run Simulation</button>
+    </div>
+
+    <!-- Table for simulation results -->
+    <div id="page-reference">Page reference will be displayed here</div>
+    
+    
+
+    <table id="simulation-table">
+        <!-- Filled dynamically with JS -->
+    </table>
+
+    <!-- Hit/Miss indicators -->
+    <div id="miss-hit-row"></div>
+
+     <!-- Add space above the frames -->
+    <div style="margin: 30px 0;"></div> <!-- Adjust margin as needed -->
+
+    <!-- Total page faults and rates display -->
+    <div id="total-page-fault"></div>
+    <div id="total-hits"></div>
+    <div id="total-misses"></div>
+    <div id="hit-miss-rate"></div> <!-- Added div for hit/miss rate -->
+
+</div>
+
+<script src="script.js"></script>
+</body>
+</html>

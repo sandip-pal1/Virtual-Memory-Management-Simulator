@@ -1,0 +1,137 @@
+/* General page styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 20px;
+    background-color: #f4f4f4;
+}
+
+.container {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 0 20px rgba(27, 26, 26, 0.9);
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+/* Settings styles */
+#settings {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    flex-wrap: wrap; /* Allows wrapping for smaller screens */
+}
+
+#settings label {
+    margin-right: 10px;
+}
+
+#settings select,
+#settings input {
+    padding: 5px;
+    font-size: 16px;
+    flex: 1; /* Allow elements to grow */
+    margin: 0 5px; /* Margin between elements */
+}
+
+#settings button {
+    padding: 10px 20px;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    flex-shrink: 0; /* Prevent button from shrinking */
+}
+
+#settings button:hover {
+    background-color: #45a049;
+}
+
+/* Table styles */
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 20px;
+}
+
+th, td {
+    padding: 8px;
+    text-align: center;
+    border-bottom: 1px solid #ddd;
+}
+
+/* Frame and result column styling */
+.page-frame-column {
+    display: grid;
+    grid-template-rows: repeat(4, 40px); /* Adjust height for 4 frames */
+    justify-items: center;
+    margin: 10px 0;
+}
+
+.page-frame-column div {
+    width: 30px;
+    height: 30px;
+    border: 1px solid #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    background-color: #eef;
+}
+
+.page-frame-column div:empty {
+    background-color: white;
+}
+
+/* Miss/Hit styling aligned with frames */
+#miss-hit-row {
+    display: flex;
+    justify-content: space-between;
+    margin-top: -10px;  /* Align directly below frames */
+}
+
+#miss-hit-row span {
+    width: calc(100% / 14); /* Assuming max 14 columns for references */
+    text-align: center;
+    font-weight: bold;
+}
+
+.page-fault-yes {
+    color: red;
+    background-color: #ffe6e6;
+    padding: 5px;
+}
+
+.page-fault-no {
+    color: green;
+    background-color: #e6ffe6;
+    padding: 5px;
+}
+
+/* Total page fault display */
+#total-page-fault, #hit-miss-rate, #total-hits, #total-misses {
+    font-weight: bold;
+    text-align: center;
+    margin-top: 10px;
+    color: #333; /* Color for readability */
+}
+
+/* Page reference display */
+#page-reference {
+    font-weight: bold;
+    text-align: center;
+    margin: 20px 0; /* Adds space around the page reference display */
+    color: #333; /* Color for readability */
+}
+
+/* Spacer class for consistent spacing */
+.spacer {
+    margin: 30px 0; /* Adjust margin as needed */
+}
